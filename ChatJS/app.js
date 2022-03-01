@@ -3,14 +3,22 @@ var fs = require('fs');
 
 app.listen(3000);
 console.log("Aplicação está em execução");
+
 function resposta (rec, res) {
-    fs.readFile(__dirname + '/index.html',
+    var arquivo ="";
+    if(req.url =="/"){
+        arquivo = __dirname + '/index.html';
+    }else{
+        arquivo = __dirname + req.url;
+    }
+    fs.readFile(arquivo,
     function (err, data) {
         if (err){
-            res.writeHead(500);
-            return res.end('Erro ao carregar o arquivo index.html');
-
+            res.writeHead(404);
+            return res.end('Página ou arquivo não encontrados');
+        
         }
+        
         res.writeHead(200);
         res.end(data);
     });
