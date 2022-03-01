@@ -4,7 +4,7 @@ var fs = require('fs');
 app.listen(3000);
 console.log("Aplicação está em execução");
 
-function resposta (rec, res) {
+function resposta (req, res) {
     var arquivo ="";
     if(req.url =="/"){
         arquivo = __dirname + '/index.html';
